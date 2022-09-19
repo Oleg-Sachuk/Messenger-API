@@ -1,0 +1,20 @@
+
+CREATE TABLE IF NOT EXISTS users
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(66) NOT NULL UNIQUE,
+    email VARCHAR(66) NOT NULL UNIQUE,
+    created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS messages
+(
+    id SERIAL PRIMARY KEY,
+    text VARCHAR (250) NOT NULL,
+    image VARCHAR(66),
+    from_user INT,
+    to_user INT,
+    FOREIGN KEY(from_user) REFERENCES users(id) ON DELETE SET NULL,
+    FOREIGN KEY(to_user) REFERENCES users(id) ON DELETE SET NULL,
+    timestamp TIMESTAMP NOT NULL
+);

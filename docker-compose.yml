@@ -1,0 +1,49 @@
+version: '3.0'
+
+networks:
+  backend: {}
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST=db
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  server:
+    depends_on:
+      - db
+    environment:
+      RDB_PORT: 6379
+      RDB_HOST: redis
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - files:/data/files
+    networks:
+      - backend
+
+
+volumes:
+  files:
+    driver: local
+    driver_opts:
+      device: $PWD/.data/files
+      o: bind
+      type: none
+  db:
+    driver: local
+    driver_opts:
+      device: $PWD/.data/postgres
+      o: bind
+      type: none
