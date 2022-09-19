@@ -1,4 +1,4 @@
-# explorer
+# Messenger API
 
 ## locally run
 
