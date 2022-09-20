@@ -22,7 +22,7 @@
    # or with cleaning
    docker-compose -p messenger down
    ```
-1. migrate data from redis to postgres
+1. run migration in postgres
    ```bash
    docker-compose -p wf exec -T messenger yarn run migrate:up
    ```
