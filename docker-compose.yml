@@ -18,6 +18,8 @@ services:
       - backend
 
   server:
+    build:
+      context: .
     depends_on:
       - db
     environment:

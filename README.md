@@ -24,6 +24,6 @@
    ```
 1. run migration in postgres
    ```bash
-   docker-compose -p wf exec -T messenger yarn run migrate:up
+   docker-compose -p messenger exec -T server yarn run migrate:up
    ```
    
