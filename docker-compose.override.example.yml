@@ -5,7 +5,6 @@ services:
     build:
       context: .
     environment:
-      WAT_HTTP_PROVIDER: 'https://rpc3.waterfall.network/rpc'
       REACT_APP_SITE_URL: ''
       REACT_APP_WEBSOCKET_URL: ''
       SYNC_DELAY: 1000

@@ -1,0 +1,4 @@
+# Dependency directories
+src/node_modules/
+docker-compose.override.yml
+.idea
